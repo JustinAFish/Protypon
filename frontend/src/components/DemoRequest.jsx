@@ -2,7 +2,7 @@ import { useRef } from "react";
 
 import { Button } from "./ui/Button";
 
-export default function DemoRequest({ onConfirm, onCancel }) {
+export default function DemoRequest({ onConfirm, onCancel, customerRequestType }) {
   const firstname = useRef();
   const surname = useRef();
   const email = useRef();
@@ -16,20 +16,25 @@ export default function DemoRequest({ onConfirm, onCancel }) {
     const enteredEmail = email.current.value;
     const enteredAware = aware.current.value;
 
+    console.log(
+      customerRequestType,
+      // enteredFirstName,
+      // enteredSurname,
+      // enteredEmail,
+      // enteredAware
+    );
     onConfirm();
-
-    console.log(enteredFirstName, enteredSurname, enteredEmail, enteredAware);
   }
 
   return (
     <form className="mx-36">
-         <main className="text-5xl md:text-6xl font-bold  max-w-1 mb-6 mt-6">
-            <h1 className="inline">
-              <span className="bg-gradient-to-r from-[#61DAFB] via-[#1fc0f1] to-[#03a3d7] text-transparent bg-clip-text">
-                Demo Request
-              </span>
-            </h1>
-          </main>
+      <main className="text-5xl md:text-6xl font-bold  max-w-1 mb-6 mt-6">
+        <h1 className="inline">
+          <span className="bg-gradient-to-r from-[#61DAFB] via-[#1fc0f1] to-[#03a3d7] text-transparent bg-clip-text">
+            Demo Request
+          </span>
+        </h1>
+      </main>
 
       <div className="mb-6">
         <label
@@ -95,9 +100,11 @@ export default function DemoRequest({ onConfirm, onCancel }) {
         />
       </div>
       <div className="flex justify-end space-x-4 mb-6">
-      <Button variant="outline" onClick= {onCancel} >Close</Button>
-      <Button onClick={handleSubmit}>Submit</Button>
-    </div>
+        <Button variant="outline" onClick={onCancel}>
+          Close
+        </Button>
+        <Button onClick={handleSubmit}>Submit</Button>
+      </div>
     </form>
   );
 }
