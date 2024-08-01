@@ -1,8 +1,13 @@
 import { useRef } from "react";
+import axios from "axios";
 
 import { Button } from "./ui/Button";
 
-export default function DemoRequest({ onConfirm, onCancel, customerRequestType }) {
+export default function DemoRequest({
+  onConfirm,
+  onCancel,
+  customerRequestType,
+}) {
   const firstname = useRef();
   const surname = useRef();
   const email = useRef();
@@ -16,14 +21,23 @@ export default function DemoRequest({ onConfirm, onCancel, customerRequestType }
     const enteredEmail = email.current.value;
     const enteredAware = aware.current.value;
 
-    console.log(
+    const requestData = {
       customerRequestType,
-      // enteredFirstName,
-      // enteredSurname,
-      // enteredEmail,
-      // enteredAware
-    );
-    onConfirm();
+      enteredFirstName,
+      enteredSurname,
+      enteredEmail,
+      enteredAware,
+    };
+
+    axios
+      .post("http://localhost:5050/customers", requestData)
+      .then((response) => {
+        console.log("Success:", response.data);
+        onConfirm(); // Call onConfirm after successful submission
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   }
 
   return (
