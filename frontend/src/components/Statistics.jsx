@@ -3,7 +3,7 @@ import React from 'react';
 export const Statistics = () => {
   const stats = [
     {
-      quantity: "7",
+      quantity: "10",
       description: "Universities",
     },
     {
@@ -11,8 +11,8 @@ export const Statistics = () => {
       description: "Lecturers",
     },
     {
-      quantity: "112",
-      description: "Downloads",
+      quantity: "15",
+      description: "Years AI Experience",
     },
     {
       quantity: "3",

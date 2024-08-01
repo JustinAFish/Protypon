@@ -1,25 +1,27 @@
-import { useRef } from "react";
+import { useState, useRef } from "react";
 
 import { Button } from "./ui/Button";
-import Modal from './Modal'
+import Modal from "./Modal";
+import DemoRequest from "./DemoRequest";
 
 export default function Hero() {
-  const modal = useRef();
+  //const modal = useRef();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  function handleOpenCartClick() {
-    modal.current.open();
+  function handleOpenDataInput() {
+    setModalIsOpen(true);
   }
 
-  let modalActions = (
-    <div className="justify-between p-2">
-      <Button variant="outline" >Close</Button>
-      <Button>Submit</Button>
-    </div>
-  );
+  function handleCloseDataInput() {
+    setModalIsOpen(false);
+  }
 
   return (
     <>
-    <Modal ref={modal} actions={modalActions} />
+      <Modal open={modalIsOpen} onClose={handleCloseDataInput}>
+        <DemoRequest onCancel={handleCloseDataInput}
+          onConfirm={handleCloseDataInput} />
+      </Modal>
       <section className="container grid lg:grid-cols-2 place-items-center py-20 md:py-32 gap-10">
         <div className="text-center lg:text-start space-y-6">
           <main className="text-5xl md:text-6xl font-bold  max-w-1">
@@ -36,12 +38,18 @@ export default function Hero() {
           </p>
           <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2">
             <div className="space-y-4 md:space-y-0 md:space-x-4">
-              <Button onClick={handleOpenCartClick} variant="outline" className="w-full">
+              <Button
+                onClick={handleOpenDataInput}
+                variant="outline"
+                className="w-full"
+              >
                 Request a Demo
               </Button>
             </div>
             <div className="space-y-4 md:space-y-0 md:space-x-4">
-              <Button onClick={handleOpenCartClick} className="w-full">Join Waiting List</Button>
+              <Button onClick={handleOpenDataInput} className="w-full">
+                Join Waiting List
+              </Button>
             </div>
           </div>
         </div>

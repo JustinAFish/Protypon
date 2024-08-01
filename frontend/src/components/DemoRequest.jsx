@@ -1,6 +1,8 @@
 import { useRef } from "react";
 
-export default function DemoRequest() {
+import { Button } from "./ui/Button";
+
+export default function DemoRequest({ onConfirm, onCancel }) {
   const firstname = useRef();
   const surname = useRef();
   const email = useRef();
@@ -14,12 +16,14 @@ export default function DemoRequest() {
     const enteredEmail = email.current.value;
     const enteredAware = aware.current.value;
 
+    onConfirm();
+
     console.log(enteredFirstName, enteredSurname, enteredEmail, enteredAware);
   }
 
   return (
-    <form className="m-36" onSubmit={handleSubmit}>
-         <main className="text-5xl md:text-6xl font-bold  max-w-1 mb-6">
+    <form className="mx-36">
+         <main className="text-5xl md:text-6xl font-bold  max-w-1 mb-6 mt-6">
             <h1 className="inline">
               <span className="bg-gradient-to-r from-[#61DAFB] via-[#1fc0f1] to-[#03a3d7] text-transparent bg-clip-text">
                 Demo Request
@@ -90,6 +94,10 @@ export default function DemoRequest() {
           ref={aware}
         />
       </div>
+      <div className="flex justify-end space-x-4 mb-6">
+      <Button variant="outline" onClick= {onCancel} >Close</Button>
+      <Button onClick={handleSubmit}>Submit</Button>
+    </div>
     </form>
   );
 }
