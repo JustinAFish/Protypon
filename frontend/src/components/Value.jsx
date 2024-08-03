@@ -31,7 +31,7 @@ const serviceList = [
 
 export default function Value(){
   return (
-    <section id="value" className="container py-16 sm:py-32">
+    <section id="value" className="container pb-16 sm:py-32">
 
         <div>
           <h2 className="text-3xl md:text-4xl font-bold">
