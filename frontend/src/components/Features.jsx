@@ -55,8 +55,11 @@ export default function Features() {
           Great Features
         </span>
       </h2>
+      <p className="md:w-3/4 mx-auto mt-4 mb-8 text-xl text-muted-foreground">
+        This self-intuitive tool does not require any training.
+      </p>
 
-      <div className="flex flex-wrap md:justify-center gap-4">
+      {/* <div className="flex flex-wrap md:justify-center gap-4">
         {featureList.map((feature) => (
           <div key={feature}>
             <Badge variant="secondary" className="text-sm">
@@ -64,7 +67,7 @@ export default function Features() {
             </Badge>
           </div>
         ))}
-      </div>
+      </div> */}
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {features.map(({ title, description, image }) => (
